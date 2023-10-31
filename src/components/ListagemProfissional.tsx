@@ -3,14 +3,14 @@ import styles from "../App.module.css";
 import { cadastroProfissionalInterface } from '../Interfaces/CadastroProfissional';
 import axios from 'axios';
 
-const ListagemClientes= () => {
+const ListagemProfissional= () => {
 
-    const [profissionals, setClientes] = useState<cadastroProfissionalInterface[]>([]);
+    const [profissionals, setProfissionals] = useState<cadastroProfissionalInterface[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
     const handleState = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.name === "pesquisa") {
+        if (e.target.name === "pesquisarPorNome") {
             setPesquisa(e.target.value);
         }
 
@@ -31,7 +31,7 @@ const ListagemClientes= () => {
                             "content-Type": "aplication/json"
                         }
                     }).then(function (response) {
-                        setClientes(response.data.data);
+                        setProfissionals(response.data.data);
                     }).catch(function (error) {
                         console.log(error);
                     });
@@ -46,7 +46,7 @@ const ListagemClientes= () => {
         async function fetchData() {
             try {
                 const response = await axios.get('http://10.137.9.134:8000/api/find');
-                setClientes(response.data.data);
+                setProfissionals(response.data.data);
 
 
             } catch (error) {
@@ -103,6 +103,8 @@ const ListagemClientes= () => {
                                         <th>bairro</th>
                                         <th>cep</th>
                                         <th>complemento</th>
+                                        <th>senha</th>
+                                        <th>salario</th>
                                       
                                     </tr>
                                 </thead>
@@ -141,4 +143,4 @@ const ListagemClientes= () => {
     );
 }
 
-export default ListagemClientes;
+export default ListagemProfissional;

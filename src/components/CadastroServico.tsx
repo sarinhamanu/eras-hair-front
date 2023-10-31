@@ -31,7 +31,7 @@ import  React, {
                 "Content-Type": "application/json"
             }
         }).then(function(response){
-            window.location.href = "/listagem"
+            window.location.href = "/listagemServico"
         }).catch(function(error){
             console.log(error)
             console.log(dados)

@@ -22,7 +22,7 @@ const ListagemServicos = () => {
         async function fetchData() {
 
             try {
-                const response = await axios.post('http://10.137.9.134:8000/api/findNome',
+                const response = await axios.post('http://127.0.0.1:8000/api/servico/nome',
                     { nome: pesquisa },
                     {
 
@@ -45,7 +45,7 @@ const ListagemServicos = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://10.137.9.134:8000/api/find');
+                const response = await axios.get('http://127.0.0.1:8000/api/servico/retornarTodos');
                 setServicos(response.data.data);
 
 

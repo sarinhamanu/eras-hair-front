@@ -21,8 +21,7 @@ import  React, {
     const [cep, setCep] = useState<string>("");
     const [complemento, setComplemento] = useState<string>("");
     const [senha, setSenha] = useState<string>("");
-    const [salario, setSalario] = useState<string>("");
-  
+   
 
 
  
@@ -43,10 +42,10 @@ import  React, {
             cep: cep,
             complemento: complemento,
             senha: senha,
-            salario:salario,
+           
         }
  
-        axios.post('http://10.137.9.131:8000/api/store',
+        axios.post('http://127.0.0.1:8000/api/cliente/cadastro',
         dados,
         {
             headers: {
@@ -102,9 +101,7 @@ import  React, {
         if(e.target.name === "senha"){
             setSenha(e.target.value);
         }
-        if(e.target.name === "salario"){
-            setSalario(e.target.value);
-        }
+      
     }
  
     return (
@@ -221,17 +218,9 @@ import  React, {
                                         required
                                         onChange={handleState}/> 
                                     </div>
-                                    <div className='col-6'>
-                                        <label htmlFor="salario" className='form-label'>Salário</label>
-                                        <input type="text" 
-                                        name='salario'
-                                        className='form-control'
-                                        required
-                                        onChange={handleState}/> 
-                                    </div>
                                     <div className='col-12'>
                                         <button type='submit'
-                                        className='btn btn-success btn-sm'>Cadastrar Profissional</button>
+                                        className='btn btn-success btn-sm'>Cadastrar cliente</button>
                                     </div>
                                 </form>
                             </div>
