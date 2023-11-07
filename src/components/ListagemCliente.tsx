@@ -1,4 +1,7 @@
-import React,{ Component, useState,ChangeEvent,FormEvent, useEffect}from'react';
+import  React, {
+    Component, useState,
+    ChangeEvent, FormEvent, useEffect 
+ } from 'react';
 import styles from "../App.module.css";
 import { cadastroClienteInterface } from '../Interfaces/CadastroClienteInterface';
 import axios from 'axios';
@@ -22,7 +25,7 @@ const ListagemClientes= () => {
         async function fetchData() {
 
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/cliente/procurarNome',
+                const response = await axios.post('http://127.0.0.1:8000/api/servico/nome',
                     { nome: pesquisa },
                     {
 
@@ -95,14 +98,15 @@ const ListagemClientes= () => {
                                         <th>celular</th>
                                         <th>email</th>
                                         <th>cpf</th>
-                                        <th>dataNascimento</th>
+                                        {/* <th>dataNascimento</th> */}
                                         <th>cidade</th>
                                         <th>estado</th>
-                                        <th>pais</th>
-                                        <th>numero</th>
-                                        <th>bairro</th>
-                                        <th>cep</th>
-                                        <th>complemento</th>
+                                        {/* <th>pais</th> */}
+                                        {/* <th>rua</th> */}
+                                        {/* <th>numero</th> */}
+                                        {/* <th>bairro</th> */}
+                                        {/* <th>cep</th> */}
+                                        {/* <th>complemento</th> */}
                                       
                                     </tr>
                                 </thead>
@@ -114,15 +118,16 @@ const ListagemClientes= () => {
                                             <td>{clientes.celular}</td>
                                             <td>{clientes.email}</td>
                                             <td>{clientes.cpf}</td>
-                                            <td>{clientes.dataNascimento}</td>
+                                            {/* <td>{clientes.dataNascimento}</td> */}
                                             <td>{clientes.cidade}</td>
                                             <td>{clientes.estado}</td>
-                                            <td>{clientes.pais}</td>
-                                            <td>{clientes.numero}</td>
-                                            <td>{clientes.bairro}</td>
-                                            <td>{clientes.cep}</td>
-                                            <td>{clientes.complemento}</td>
-                                            <td>{clientes.senha}</td>
+                                            {/* <td>{clientes.pais}</td> */}
+                                            {/* <td>{clientes.rua}</td> */}
+                                            {/* <td>{clientes.numero}</td> */}
+                                            {/* <td>{clientes.bairro}</td> */}
+                                            {/* <td>{clientes.cep}</td> */}
+                                            {/* <td>{clientes.complemento}</td> */}
+                                            {/* <td>{clientes.senha}</td> */}
                                             <td>
                                                 <a href="#" className='btn btn-primary btn-sm'>Editar</a>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>

@@ -23,7 +23,7 @@ const CadastroProfissional = () => {
             preco: preco,
         }
 
-        axios.post('http://127.0.0.1:8000/api/servico/store',
+        axios.post('http://127.0.0.1:8000/api/Profissional/cadastro',
             dados,
             {
                 headers: {
@@ -31,7 +31,7 @@ const CadastroProfissional = () => {
                     "Content-Type": "application/json"
                 }
             }).then(function (response) {
-                window.location.href = "/listagemProfissional"
+                window.location.href = "/listagem Profissional"
             }).catch(function (error) {
                 console.log(error)
                 console.log(dados)
@@ -61,7 +61,7 @@ const CadastroProfissional = () => {
                 <div className='container'>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>Cadastrar Servico</h5>
+                            <h5 className='card-title'>Cadastrar profissionals</h5>
                             <form onSubmit={CadastroProfissional} className='row g-3'>
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Nome</label>
@@ -97,7 +97,7 @@ const CadastroProfissional = () => {
                                 </div>
                                 <div className='col-12'>
                                     <button type='submit'
-                                        className='btn btn-success btn-sm'>Cadastrar Servico</button>
+                                        className='btn btn-success btn-sm'>Cadastrar Profissional</button>
                                 </div>
                             </form>
                         </div>

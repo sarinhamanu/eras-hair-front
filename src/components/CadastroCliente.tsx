@@ -16,6 +16,7 @@ import  React, {
     const [cidade, setCidade] = useState<string>("");
     const [estado, setEstado] = useState<string>("");
     const [pais, setPais] = useState<string>("");
+    const [rua, setRua] = useState<string>("");
     const [numero, setNumero] = useState<string>("");
     const [bairro, setBairro] = useState<string>('');
     const [cep, setCep] = useState<string>("");
@@ -37,6 +38,7 @@ import  React, {
             cidade: cidade,
             estado: estado,
             pais: pais,
+            rua: rua,
             numero: numero,
             bairro: bairro,
             cep: cep,
@@ -53,11 +55,18 @@ import  React, {
                 "Content-Type": "application/json"
             }
         }).then(function(response){
-            window.location.href = "/listagemCliente"
+            if(response.data.success == false){
+                console.log("Error");
+                console.log(response.data.error);
+                alert("erro ao cadastrar, olhar o console")
+            }
+            else{
+                window.location.href = "/listagemCliente";
+            }
+            
         }).catch(function(error){
-            console.log(error)
-            console.log(dados)
-        })
+            console.log(error);
+        });
  
     }
  
@@ -85,6 +94,9 @@ import  React, {
         }
         if(e.target.name === "pais"){
             setPais(e.target.value);
+        }
+        if(e.target.name === "rua"){
+            setRua(e.target.value);
         }
         if(e.target.name === "numero"){
             setNumero(e.target.value);
@@ -119,7 +131,8 @@ import  React, {
                                         name='nome' 
                                         className='form-control'
                                         required 
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={nome}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="celular" className='form-label'>Celular</label>
@@ -127,7 +140,8 @@ import  React, {
                                         name='celular'
                                         className='form-control'
                                         required 
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={celular}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="email" className='form-label'>Email</label>
@@ -135,7 +149,8 @@ import  React, {
                                         name='email'
                                         className='form-control'
                                         required 
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={email}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="cpf" className='form-label'>Cpf</label>
@@ -143,16 +158,18 @@ import  React, {
                                         name='cpf'
                                         className='form-control'
                                         required
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={cpf}/>
                                     </div>
                                     
                                     <div className='col-6'>
                                         <label htmlFor="dataNascimento" className='form-label'>DataNascimento</label>
-                                        <input type="text"
+                                        <input type="date"
                                         name='dataNascimento'
                                         className='form-control'
                                         required 
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={dataNascimento}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="cidade" className='form-label'>Cidade</label>
@@ -160,7 +177,8 @@ import  React, {
                                         name='cidade'
                                         className='form-control'
                                         required
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={cidade}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="estado" className='form-label'>Estado</label>
@@ -168,7 +186,8 @@ import  React, {
                                         name='estado'
                                         className='form-control'
                                         required 
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={estado}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="pais" className='form-label'>Pais</label>
@@ -176,7 +195,17 @@ import  React, {
                                         name='pais'
                                         className='form-control'
                                         required
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={pais}/>
+                                    </div>
+                                    <div className='col-6'>
+                                        <label htmlFor="rua" className='form-label'>Rua</label>
+                                        <input type="text" 
+                                        name='rua'
+                                        className='form-control'
+                                        required
+                                        onChange={handleState}
+                                        value={rua}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="numero" className='form-label'>Numero</label>
@@ -184,7 +213,8 @@ import  React, {
                                         name='numero'
                                         className='form-control'
                                         required 
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={numero}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="bairro" className='form-label'>Bairro</label>
@@ -192,7 +222,8 @@ import  React, {
                                         name='bairro'
                                         className='form-control'
                                         required
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={bairro}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="cep" className='form-label'>Cep</label>
@@ -200,7 +231,8 @@ import  React, {
                                         name='cep'
                                         className='form-control'
                                         required 
-                                        onChange={handleState}/>
+                                        onChange={handleState}
+                                        value={cep}/>
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="complemento" className='form-label'>Complemento</label>
@@ -208,7 +240,8 @@ import  React, {
                                         name='complemento'
                                         className='form-control'
                                         required
-                                        onChange={handleState}/> 
+                                        onChange={handleState}
+                                        value={complemento}/> 
                                     </div>
                                     <div className='col-6'>
                                         <label htmlFor="senha" className='form-label'>Senha</label>
@@ -216,7 +249,8 @@ import  React, {
                                         name='senha'
                                         className='form-control'
                                         required
-                                        onChange={handleState}/> 
+                                        onChange={handleState}
+                                        value={senha}/> 
                                     </div>
                                     <div className='col-12'>
                                         <button type='submit'
