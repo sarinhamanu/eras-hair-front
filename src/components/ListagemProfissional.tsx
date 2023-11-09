@@ -23,7 +23,7 @@ const Listagemprofissionals = () => {
 
         async function fetchData(){
             try{
-                const response = await axios.post('http://127.0.0.1:8000/api/Profissional/cadastro',
+                const response = await axios.post('http://127.0.0.1:8000/api/cliente/procurarNome',
                 {nome:pesquisa},
                 {
                     headers:{
@@ -31,6 +31,13 @@ const Listagemprofissionals = () => {
                         "content-Type":"aplication/json"
                     }
                 }).then(function(response){
+                    console.log(response);
+                    if(response.data.status == true){
+                        setProfissionals(response.data.data);
+                    }
+                    else{
+                        setProfissionals([]);
+                    }
                     setProfissionals(response.data.data);
                 }).catch(function(error){
                     console.log(error);
