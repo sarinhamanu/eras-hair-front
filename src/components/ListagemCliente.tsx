@@ -36,7 +36,7 @@ const ListagemCliente = () => {
                     else{
                         setClientes([]);
                     }
-                    setClientes(response.data.data);
+                    
                 }).catch(function(error){
                     console.log(error);
                 });

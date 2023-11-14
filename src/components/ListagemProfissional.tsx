@@ -1,62 +1,60 @@
-import React, {Component, useState, ChangeEvent, FormEvent, useEffect}from 'react';
+import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import styles from "../App.module.css"
 import { cadastroProfissionalInterface } from '../Interfaces/CadastroProfissional';
 import axios from 'axios';
-import Header from './Header';
-import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
+const ListagemProfissional = () => {
 
-const Listagemprofissionals = () => {
-
-    const [profissionals, setProfissionals] = useState<cadastroProfissionalInterface[]>([]);
+    const [Profissionals, setProfissionals] = useState<cadastroProfissionalInterface[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
-    const hadleState =(e: ChangeEvent<HTMLInputElement>)=>{
-        if(e.target.name === "pesquisa"){
+    const hadleState = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.name === "pesquisa") {
             setPesquisa(e.target.value);
         }
     }
 
-    const buscar = (e:FormEvent)=>{
+    const buscar = (e: FormEvent) => {
         e.preventDefault();
 
-        async function fetchData(){
-            try{
-                const response = await axios.post('http://127.0.0.1:8000/api/cliente/procurarNome',
-                {nome:pesquisa},
-                {
-                    headers:{
-                        "Accept":"application/json",
-                        "content-Type":"aplication/json"
-                    }
-                }).then(function(response){
-                    console.log(response);
-                    if(response.data.status == true){
-                        setProfissionals(response.data.data);
-                    }
-                    else{
-                        setProfissionals([]);
-                    }
-                    setProfissionals(response.data.data);
-                }).catch(function(error){
-                    console.log(error);
-                });
+        async function fetchData() {
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/Profissional/procurarNome',
+                    { nome: pesquisa },
+                    {
+                        headers: {
+                            "Accept": "application/json",
+                            "content-Type": "aplication/json"
+                        }
+                    }).then(function (response) {
+                        console.log(response);
+                        if (response.data.status == true) {
+                            setProfissionals(response.data.data);
+                        }
+                        else {
+                            setProfissionals([]);
+                        }
 
-            }catch(error){
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+
+            } catch (error) {
                 console.log(error);
             }
         }
         fetchData();
     }
-    useEffect(() =>{
-        async function fetchData(){
-            try{
+    useEffect(() => {
+        async function fetchData() {
+            try {
                 const response = await axios.get('http://127.0.0.1:8000/api/Profissional/retornarTodos');
                 setProfissionals(response.data.data);
-                
 
-            }catch(error){
+
+            } catch (error) {
                 setError("Ocorreu um erro");
                 console.log(error);
 
@@ -66,38 +64,35 @@ const Listagemprofissionals = () => {
 
         fetchData();
     }, []);
-    return(
+    return (
         <div>
             <main className={styles.main}>
-           
                 <div className='container'>
 
                     <div className='col-md mb-3'>
                         <div className='card'>
                             <div className='card-body'>
                                 <h5 className='card-title'>Pesquisar</h5>
-                                <form onSubmit={buscar}className='row'>
+                                <form onSubmit={buscar} className='row'>
                                     <div className='col-10'>
-                                        <input type="text" name='pesquisa' className='form-control' onChange={hadleState}/>
+                                        <input type="text" name='pesquisa' className='form-control' onChange={hadleState} />
                                     </div>
-                                    
+
                                     <div className='col-1'>
                                         <button type='submit'
-                                         className='btn btn-success'>Pesquisar</button>
-                                     </div>
+                                            className='btn btn-success'>Pesquisar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
 
-                  
-
                     <div className='card'>
                         <div className='card-body'>
                             <h5 className='card-title'>
-                                Listagem de Profissionais
+                                Listagem de Profissionals
                             </h5>
-                            <table className='table table-hover table-bordered border-dark border border-success p-2 mb-2 border-opacity-25'>
+                            <table className='table table-hover table-bordered border-dark border border-success p-2 mb-2 border-opacity-25 '>
                                 <thead>
                                     <tr>
                                         {/* <th>ID</th> */}
@@ -117,38 +112,38 @@ const Listagemprofissionals = () => {
                                         {/* <th>senha</th> */}
                                         <th>salario</th>
                                     </tr>
-                                    
-                                    
+
+
                                 </thead>
                                 <tbody>
-                                    {profissionals.map(profissionals =>(
-                                    <tr key={profissionals.id}>
-                                        {/* <td>{profissionals.id}</td> */}
-                                        <td>{profissionals.nome}</td>
-                                        <td>{profissionals.celular}</td>
-                                        <td>{profissionals.email}</td>
-                                        <td>{profissionals.cpf}</td>
-                                        <td>{profissionals.dataNascimento}</td>
-                                        <td>{profissionals.cidade}</td>
-                                        <td>{profissionals.estado}</td>
-                                        {/* <td>{profissionals.pais}</td> */}
-                                        {/* <td>{profissionals.rua}</td> */}
-                                        {/* <td>{profissionals.numero}</td> */}
-                                        {/* <td>{profissionals.bairro}</td> */}
-                                        {/* <td>{profissionals.cep}</td> */}
-                                        {/* <td>{profissionals.complemento}</td> */}
-                                        {/* <td>{profissionals.senha}</td> */}
-                                        <td>
-                                            <a href="#" className='btn btn-primary btn-sm'>Editar</a>
-                                            <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
-                                        </td>
-                                    </tr>
+                                    {Profissionals.map(Profissionals => (
+                                        <tr key={Profissionals.id}>
+                                            {/* <td>{Profissionals.id}</td> */}
+                                            <td>{Profissionals.nome}</td>
+                                            <td>{Profissionals.celular}</td>
+                                            <td>{Profissionals.email}</td>
+                                            <td>{Profissionals.cpf}</td>
+                                            <td>{Profissionals.dataNascimento}</td>
+                                            <td>{Profissionals.cidade}</td>
+                                            <td>{Profissionals.estado}</td>
+                                            {/* <td>{Profissionals.pais}</td> */}
+                                            {/* <td>{Profissionals.rua}</td> */}
+                                            {/* <td>{Profissionals.numero}</td> */}
+                                            {/* <td>{Profissionals.bairro}</td> */}
+                                            {/* <td>{Profissionals.cep}</td> */}
+                                            {/* <td>{Profissionals.complemento}</td> */}
+                                            {/* <td>{Profissionals.senha}</td> */}
+                                            <td>{Profissionals.salario}</td>
+                                            <td>
+                                                <Link to={"/editarProfissionals/" + Profissionals.id} className='btn btn-primary btn-sm'>Editar</Link>
+                                                <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
+                                            </td>
+                                        </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    
 
                 </div>
 
@@ -157,4 +152,4 @@ const Listagemprofissionals = () => {
     );
 }
 
-export default Listagemprofissionals;
+export default ListagemProfissional;
