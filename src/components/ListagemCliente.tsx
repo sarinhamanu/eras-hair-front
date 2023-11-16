@@ -100,7 +100,7 @@ const ListagemCliente = () => {
                                         <th>celular</th>
                                         <th>email</th>
                                         <th>cpf</th>
-                                        <th>dataNascimento</th>
+                                        {/* <th>dataNascimento</th> */}
                                         <th>cidade</th>
                                         <th>estado</th>
                                         {/* <th>pais</th> */}
@@ -123,7 +123,7 @@ const ListagemCliente = () => {
                                         <td>{clientes.celular}</td>
                                         <td>{clientes.email}</td>
                                         <td>{clientes.cpf}</td>
-                                        <td>{clientes.dataNascimento}</td>
+                                        {/* <td>{clientes.dataNascimento}</td> */}
                                         <td>{clientes.cidade}</td>
                                         <td>{clientes.estado}</td>
                                         {/* <td>{clientes.pais}</td> */}
@@ -134,7 +134,7 @@ const ListagemCliente = () => {
                                         {/* <td>{clientes.complemento}</td> */}
                                         {/* <td>{clientes.senha}</td> */}
                                         <td>
-                                            <Link to={"/editarClientes/"+ clientes.id}  className='btn btn-primary btn-sm'>Editar</Link>
+                                            <Link to={"/editarCliente/"+ clientes.id}  className='btn btn-primary btn-sm'>Editar</Link>
                                             <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
                                         </td>
                                     </tr>

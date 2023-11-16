@@ -100,15 +100,15 @@ const ListagemProfissional = () => {
                                         <th>celular</th>
                                         <th>email</th>
                                         <th>cpf</th>
-                                        <th>dataNascimento</th>
+                                        {/* <th>dataNascimento</th> */}
                                         <th>cidade</th>
-                                        <th>estado</th>
+                                        {/* <th>estado</th> */}
                                         {/* <th>pais</th> */}
                                         {/* <th>rua</th> */}
                                         {/* <th>numero</th> */}
                                         {/* <th>bairro</th> */}
                                         {/* <th>cep</th> */}
-                                        {/* <th>complememnto</th> */}
+                                        {/* <th>complemento</th> */}
                                         {/* <th>senha</th> */}
                                         <th>salario</th>
                                     </tr>
@@ -116,26 +116,26 @@ const ListagemProfissional = () => {
 
                                 </thead>
                                 <tbody>
-                                    {Profissionals.map(Profissionals => (
-                                        <tr key={Profissionals.id}>
+                                    {Profissionals.map(Profissional => (
+                                        <tr key={Profissional.id}>
                                             {/* <td>{Profissionals.id}</td> */}
-                                            <td>{Profissionals.nome}</td>
-                                            <td>{Profissionals.celular}</td>
-                                            <td>{Profissionals.email}</td>
-                                            <td>{Profissionals.cpf}</td>
-                                            <td>{Profissionals.dataNascimento}</td>
-                                            <td>{Profissionals.cidade}</td>
-                                            <td>{Profissionals.estado}</td>
-                                            {/* <td>{Profissionals.pais}</td> */}
-                                            {/* <td>{Profissionals.rua}</td> */}
-                                            {/* <td>{Profissionals.numero}</td> */}
-                                            {/* <td>{Profissionals.bairro}</td> */}
-                                            {/* <td>{Profissionals.cep}</td> */}
-                                            {/* <td>{Profissionals.complemento}</td> */}
-                                            {/* <td>{Profissionals.senha}</td> */}
-                                            <td>{Profissionals.salario}</td>
+                                            <td>{Profissional.nome}</td>
+                                            <td>{Profissional.celular}</td>
+                                            <td>{Profissional.email}</td>
+                                            <td>{Profissional.cpf}</td>
+                                            {/* <td>{Profissionals.dataNascimento}</td> */}
+                                            <td>{Profissional.cidade}</td>
+                                            {/* <td>{Profissional.estado}</td> */}
+                                            {/* <td>{Profissional.pais}</td> */}
+                                            {/* <td>{Profissional.rua}</td> */}
+                                            {/* <td>{Profissional.numero}</td> */}
+                                            {/* <td>{Profissional.bairro}</td> */}
+                                            {/* <td>{Profissional.cep}</td> */}
+                                            {/* <td>{Profissional.complemento}</td> */}
+                                            {/* <td>{Profissional.senha}</td> */}
+                                            <td>{Profissional.salario}</td>
                                             <td>
-                                                <Link to={"/editarProfissionals/" + Profissionals.id} className='btn btn-primary btn-sm'>Editar</Link>
+                                                <Link to={"/editarProfissional/" + Profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>

@@ -5,6 +5,7 @@ import  React, {
 import styles from "../App.module.css"
 import  {cadastroServicoInterface} from '../Interfaces/CadastroServicoInterFace'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ListagemServico = () => {
 
@@ -23,7 +24,7 @@ const ListagemServico = () => {
 
         async function fetchData(){
             try{
-                const response = await axios.post('http://127.0.0.1:8000/api/nome',
+                const response = await axios.post('http://127.0.0.1:8000/api/servico/nome',
                 {nome:pesquisa},
                 {
                     headers:{
@@ -31,7 +32,14 @@ const ListagemServico = () => {
                         "content-Type":"aplication/json"
                     }
                 }).then(function(response){
-                    setServicos(response.data.data);
+                    console.log(response);
+                    if(response.data.status == true){
+                        setServicos(response.data.data);
+                    }
+                    else{
+                        setServicos([]);
+                    }
+                    
                 }).catch(function(error){
                     console.log(error);
                 });
@@ -106,7 +114,8 @@ const ListagemServico = () => {
                                         <td>{servicos.duracao}</td>
                                         <td>{servicos.preco}</td>
                                         <td>
-                                            <a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                           <Link to={"/editarServico/" + servicos.id} className='btn btn-primary btn-sm'>Editar</Link>
+   
                                             <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
                                         </td>
                                     </tr>
