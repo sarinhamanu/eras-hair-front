@@ -1,7 +1,7 @@
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import styles from "../App.module.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./HeaderProfissional";
+import Footer from "./FooterProfissional";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 const EditarProfissional = () => {
@@ -26,7 +26,7 @@ const EditarProfissional = () => {
 
     const parametro = useParams();
 
-    const atualizar = (e: FormEvent) => {
+    const Atualizar = (e: FormEvent) => {
         e.preventDefault();
 
 
@@ -72,17 +72,17 @@ const EditarProfissional = () => {
     }
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchData() {    
             try {
                 const response = await axios.get("http://127.0.0.1:8000/api/Profissional/find/" + parametro.id);
                 console.log(response);
 
-                if(true === response.data.status){
 
                 setId(response.data.data.id);
                 setNome(response.data.data.nome);
-                setCelular(response.data.data.Celular);
+                setCelular(response.data.data.celular);
                 setEmail(response.data.data.email);
+                setCpf(response.data.data.cpf)
                 setDataNascimento(response.data.data.dataNascimento);
                 setCidade(response.data.data.Cidade);
                 setEstado(response.data.data.estado);
@@ -95,9 +95,10 @@ const EditarProfissional = () => {
                 setSenha(response.data.data.senha);
                 setSalario(response.data.data.salario);
                 
-                }
+                
             } catch (error) {
                 console.log("erro ao buscar  dados da api");
+                console.log(error);
             }
         }
 
@@ -161,7 +162,7 @@ const EditarProfissional = () => {
                     <div className='card'>
                         <div className='card-body'>
                             <h5 className='card-title'>Editar Profissional</h5>
-                            <form onSubmit={atualizar} className='row g-3'>
+                            <form onSubmit={Atualizar} className='row g-3'>
 
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Nome</label>
@@ -256,7 +257,7 @@ const EditarProfissional = () => {
 
             <Footer />
         </div>
-    );
+    )
 }
 
 export default EditarProfissional;

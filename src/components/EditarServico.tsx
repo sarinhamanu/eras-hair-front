@@ -1,11 +1,12 @@
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import styles from "../App.module.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./HeaderServico";
+import Footer from "./FooterServico";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 const EditarSevico = () => {
 
+    const [id,setId] = useState <number>();
     const [nome, setNome] = useState<string>("");
     const [descricao, setDescricao] = useState<string>("");
     const [duracao, setDuracao] = useState<string>("");
@@ -19,6 +20,7 @@ const EditarSevico = () => {
 
         const dados = {
          
+            id: id,
             nome: nome,
             descricao: descricao,
             duracao: duracao,
@@ -29,12 +31,20 @@ const EditarSevico = () => {
                 headers: {
                     "Accept": "appication/json",
                     "Content-Type": "application/json"
+               
+                }
+            }).then(function (response) {
+                if (response.data.success == false) {
+                    console.log("Error");
+                    console.log(response.data.error);
+                    alert("erro ao Editar, olhar o console")
+                }
+                else {
+                    window.location.href = "/listagemServico";
                 }
 
-            }).then(function (response) {
-                window.location.href = "/listagemServico";
             }).catch(function (error) {
-                console.log('ocorreu um erro ao atualizar');
+                console.log(error);
             });
     }
 
@@ -42,7 +52,8 @@ const EditarSevico = () => {
         async function fetchData() {
             try {
                 const response = await axios.get("http://127.0.0.1:8000/api/servico/find/" + parametro.id);
-                console.log(response);
+                //console.log(response);
+                setId(response.data.data.id);
                 setNome(response.data.data.nome);
                 setDescricao(response.data.data.descricao);
                 setDuracao(response.data.data.duracao);

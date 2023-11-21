@@ -5,10 +5,10 @@ const Footer = () =>{
     return(
         <footer className={styles.footer}>
             <p>
-              <span> Buscador de CEP</span> @|Senai
+                <span>Cadastro Servico</span> @SENAI
             </p>
         </footer>
-       );
-    }
- 
-       export default Footer;
+    );
+}
+
+export default Footer;

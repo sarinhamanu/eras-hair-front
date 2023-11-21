@@ -1,7 +1,7 @@
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import styles from "../App.module.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./HeaderCliente";
+import Footer from "./FooterCliente";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 const EditarCliente = () => {
@@ -46,7 +46,7 @@ const EditarCliente = () => {
             complemento: complemento,
             senha: senha,
         }
-        axios.put("http://127.0.0.1:8000/api/servico/update", dados,
+        axios.put("http://127.0.0.1:8000/api/cliente/update", dados,
             {
                 headers: {
                     "Accept": "appication/json",
@@ -73,8 +73,7 @@ const EditarCliente = () => {
             try {
               
                 const response = await axios.get("http://127.0.0.1:8000/api/cliente/find/" + parametro.id);
-                console.log(response);
-
+                //console.log(response);
                 if(true === response.data.status){
                 setId(response.data.data.id);
                 setNome(response.data.data.nome);

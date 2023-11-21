@@ -1,13 +1,13 @@
 import React from "react";
 
 import styles from "./Header.module.css"
-
-const Header = () => {
-    return (
+const HeaderCliente = ( )=>{
+    return(
         <header className={styles.header}>
-            <h1>Cadastro do ERAS-hair</h1>
+          <h1>Cadastro Cliente</h1>
         </header>
     );
 }
 
-export default Header;
+
+export default HeaderCliente;
