@@ -121,6 +121,7 @@ const CadastroCliente = () => {
 
     return(
         <div>
+            
            <Header />
            <main className={styles.main}>
             <div className='container'>

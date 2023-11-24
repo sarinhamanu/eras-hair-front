@@ -47,6 +47,28 @@ const ListagemProfissional = () => {
         }
         fetchData();
     }
+    const excluir = (id: number)=>{
+        async function fetchData(){
+            try{
+                const response = await axios.delete('http://127.0.0.1:8000/api/Profissional/excluir/'+ id);
+                if(response.data.status === true){
+
+                    const response = await axios.get('http://127.0.0.1:8000/api/Profissional/retornarTodos');
+                    setProfissionals(response.data.data);
+                   
+                }
+                else{
+                    console.log(error);
+                }
+            }catch(error){
+                setError("ocorreu um erro");
+                console.log(error);
+            }
+
+        }fetchData();
+            }
+        
+    
     useEffect(() => {
         async function fetchData() {
             try {
@@ -66,6 +88,35 @@ const ListagemProfissional = () => {
     }, []);
     return (
         <div>
+           
+            <nav className=" bg-warning">
+                <ul className="nav nav-tabs">
+                    <li className="nav-item dropdown btn-warning">
+                        <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Listagens</a>
+                        <ul className="dropdown-menu">
+                            <li><Link to={"/ListagemProfissional"} className="dropdown-item" >Listagem Profissional</Link></li>
+                            <li><Link to={"/ListagemCliente"} className="dropdown-item">Listagem Cliente</Link></li>
+                           
+                        </ul>
+                    </li>
+                    
+                    <li className="nav-item dropdown btn-warning">
+                        <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastros</a>
+                        <ul className="dropdown-menu">
+                            <li><Link to={"/CadastroServico"} className="dropdown-item" >Cadastro Serviço</Link></li>
+                            <li><Link to={"/cadastroProfissional"} className="dropdown-item">Cadastro Profissional</Link></li>
+                            <li><Link to={"/CadastroCliente"} className="dropdown-item">Cadastro Cliente</Link></li>
+                           
+                        </ul>
+                    </li>
+
+               
+
+                </ul>
+               
+            </nav>
+            <Header />
+
             <main className={styles.main}>
                 <div className='container'>
 
@@ -136,7 +187,7 @@ const ListagemProfissional = () => {
                                             <td>{Profissional.salario}</td>
                                             <td>
                                                 <Link to={"/editarProfissional/" + Profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                                <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
+                                                <button onClick={()=>excluir(Profissional.id)} className='btn btn-danger btn-sm'>Excluir</button>
                                             </td>
                                         </tr>
                                     ))}

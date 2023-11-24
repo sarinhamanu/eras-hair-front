@@ -47,6 +47,27 @@ const ListagemCliente = () => {
         }
         fetchData();
     }
+
+    const excluir = (id: number)=>{
+        async function fetchData(){
+            try{
+                const response = await axios.delete('http://127.0.0.1:8000/api/cliente/excluir/'+ id);
+                if(response.data.status === true){
+
+                    const response = await axios.get('http://127.0.0.1:8000/api/cliente/retornarTodos');
+                    setClientes(response.data.data);
+                   
+                }
+                else{
+                    console.log(error);
+                }
+            }catch(error){
+                setError("ocorreu um erro");
+                console.log(error);
+            }
+
+        }fetchData();
+            }
     useEffect(() =>{
         async function fetchData(){
             try{
@@ -135,7 +156,7 @@ const ListagemCliente = () => {
                                         {/* <td>{clientes.senha}</td> */}
                                         <td>
                                             <Link to={"/editarCliente/"+ clientes.id}  className='btn btn-primary btn-sm'>Editar</Link>
-                                            <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
+                                            <button onClick={()=>excluir(clientes.id)} className='btn btn-danger btn-sm'>Excluir</button>
                                         </td>
                                     </tr>
                                     ))}
