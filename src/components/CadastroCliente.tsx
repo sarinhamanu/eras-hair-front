@@ -3,6 +3,8 @@ import Header from './HeaderCliente';
 import Footer from './FooterCliente';
 import styles from '../App.module.css'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import HeaderCliente from './HeaderCliente';
 
 const CadastroCliente = () => {
 
@@ -116,13 +118,55 @@ const CadastroCliente = () => {
        
     }
     
-      
+    const findCep = (e: FormEvent) => {
+        e.preventDefault();
+        console.log(cep)
+        fetch('https://viacep.com.br/ws/'+cep+'/json/',
+        {
+            method: 'GET'
+        }).then(response => response.json())
+        .then(
+            data => {
+                setCidade(data.localidade);
+                setCep(data.cep);
+                setRua(data.logradouro);
+                setBairro(data.bairro);
+
+
+                setEstado(data.uf);       
+            }
+        ).catch(function(error){
+            console.log(error);
+        });
+        
+    }
 
 
     return(
         <div>
-            
-           <Header />
+                       <nav className=" bg-warning">
+                <ul className="nav nav-tabs">
+                    <li className="nav-item dropdown btn-warning">
+                        <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastros</a>
+                        <ul className="dropdown-menu">
+                            <li><Link to={"/CadastroServico"} className="dropdown-item" >Cadastro Serviço</Link></li>
+                            <li><Link to={"/cadastroProfissional"} className="dropdown-item">Cadastro Profissional</Link></li>
+                           
+                        </ul>
+                    </li>
+                    <li className="nav-item dropdown btn-warning">
+                        <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Listagens</a>
+                        <ul className="dropdown-menu">
+                            <li><Link to={"/ListagemServico"} className="dropdown-item" >Listagem Serviço</Link></li>
+                            <li><Link to={"/ListagemCliente"} className="dropdown-item">Listagem Cliente</Link></li>
+                            <li><Link to={"/ListagemServico"} className="dropdown-item">Listagem Serviço</Link></li>
+                           
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+           <Header/>
            <main className={styles.main}>
             <div className='container'>
                 <div className='card'>

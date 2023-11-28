@@ -3,6 +3,8 @@ import Header from './HeaderProfissional';
 import Footer from './FooterProfissional';
 import styles from '../App.module.css'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import HeaderProfissional from './HeaderProfissional';
 
 const CadastroProfissional = () => {
 
@@ -125,7 +127,29 @@ const CadastroProfissional = () => {
 
     return(
         <div>
-           <Header />
+     <nav className=" bg-warning">
+                <ul className="nav nav-tabs">
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastros</a>
+                        <ul className="dropdown-menu">
+                            <li><Link to={"/cadastroCliente"} className="dropdown-item" >Cadastro Cliente</Link></li>
+                            <li><Link to={"/cadastroServico"} className="dropdown-item">Cadastro Serviço</Link></li>
+                           
+                        </ul>
+                    </li>
+                    <li className="nav-item dropdown btn-warning">
+                        <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Listagens</a>
+                        <ul className="dropdown-menu">
+                            <li><Link to={"/listagemServico"} className="dropdown-item" >Listagem Serviço</Link></li>
+                            <li><Link to={"/listagemCliente"} className="dropdown-item">Listagem Cliente</Link></li>
+                            <li><Link to={"/listagemServico"} className="dropdown-item">Listagem Serviço</Link></li>
+                           
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+         <Header/>
            <main className={styles.main}>
             <div className='container'>
                 <div className='card'>

@@ -3,6 +3,8 @@ import styles from "../App.module.css"
 import { cadastroProfissionalInterface } from '../Interfaces/CadastroProfissional';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import HeaderProfissional from './HeaderProfissional';
+import Header from './HeaderProfissional';
 
 const ListagemProfissional = () => {
 
@@ -94,8 +96,8 @@ const ListagemProfissional = () => {
                     <li className="nav-item dropdown btn-warning">
                         <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Listagens</a>
                         <ul className="dropdown-menu">
-                            <li><Link to={"/ListagemProfissional"} className="dropdown-item" >Listagem Profissional</Link></li>
-                            <li><Link to={"/ListagemCliente"} className="dropdown-item">Listagem Cliente</Link></li>
+                            <li><Link to={"/listagemServico"} className="dropdown-item" >Listagem Servico</Link></li>
+                            <li><Link to={"/listagemCliente"} className="dropdown-item">Listagem Cliente</Link></li>
                            
                         </ul>
                     </li>
@@ -103,9 +105,9 @@ const ListagemProfissional = () => {
                     <li className="nav-item dropdown btn-warning">
                         <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastros</a>
                         <ul className="dropdown-menu">
-                            <li><Link to={"/CadastroServico"} className="dropdown-item" >Cadastro Serviço</Link></li>
+                            <li><Link to={"/cadastroServico"} className="dropdown-item" >Cadastro Serviço</Link></li>
                             <li><Link to={"/cadastroProfissional"} className="dropdown-item">Cadastro Profissional</Link></li>
-                            <li><Link to={"/CadastroCliente"} className="dropdown-item">Cadastro Cliente</Link></li>
+                            <li><Link to={"/cadastroCliente"} className="dropdown-item">Cadastro Cliente</Link></li>
                            
                         </ul>
                     </li>
@@ -115,7 +117,7 @@ const ListagemProfissional = () => {
                 </ul>
                
             </nav>
-            <Header />
+          <Header/>
 
             <main className={styles.main}>
                 <div className='container'>
