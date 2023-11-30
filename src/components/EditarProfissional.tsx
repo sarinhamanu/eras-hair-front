@@ -84,14 +84,14 @@ const EditarProfissional = () => {
                 setEmail(response.data.data.email);
                 setCpf(response.data.data.cpf)
                 setDataNascimento(response.data.data.dataNascimento);
-                setCidade(response.data.data.Cidade);
+                setCidade(response.data.data.cidade);
                 setEstado(response.data.data.estado);
                 setPais(response.data.data.pais);
-                setRua(response.data.data.Rua);
+                setRua(response.data.data.rua);
                 setNumero(response.data.data.numero);
                 setBairro(response.data.data.bairro);
                 setCep(response.data.data.cep);
-                setComplemento(response.data.data.complememnto);
+                setComplemento(response.data.data.complemento);
                 setSenha(response.data.data.senha);
                 setSalario(response.data.data.salario);
                 

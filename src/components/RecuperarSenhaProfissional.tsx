@@ -19,7 +19,7 @@ const RecuperarSenha =()=>{
             senha:senha,
          }
 
-         axios.post('http://127.0.0.1:8000/api/cliente/esqueciSenha', dados,
+         axios.post('http://127.0.0.1:8000/api/Profissional/esqueciSenha', dados,
          {
             headers:{
                 "Accept": "application/json",
@@ -33,7 +33,7 @@ const RecuperarSenha =()=>{
             }
             else{
                 console.log(response)
-                window.location.href ="/listagemCliente";
+                window.location.href ="/listagemProfissional";
             }
          }).catch(function(error){
             console.log(error);

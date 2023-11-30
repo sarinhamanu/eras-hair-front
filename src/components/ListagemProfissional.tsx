@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import HeaderProfissional from './HeaderProfissional';
 import Header from './HeaderProfissional';
+import Swal from 'sweetalert2';
 
 const ListagemProfissional = () => {
 
@@ -69,6 +70,35 @@ const ListagemProfissional = () => {
 
         }fetchData();
             }
+
+            
+    const confirmacao = (id: number) => {
+        Swal.fire({
+            title: "Tem certeza que quer excluir?",
+            text: "Você não vai poder reverter isso depois!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim, excluir"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                excluir(id);
+
+                Swal.fire({
+                    title: "Excluido com sucesso!",
+                    text: "seu cadastro foi excluido.",
+                    icon: "success"
+
+
+                });
+
+            }
+
+        });
+
+    }
         
     
     useEffect(() => {
@@ -91,9 +121,9 @@ const ListagemProfissional = () => {
     return (
         <div>
            
-            <nav className=" bg-warning">
+            <nav className=" bg-white">
                 <ul className="nav nav-tabs">
-                    <li className="nav-item dropdown btn-warning">
+                    <li className="nav-item dropdown btn-dark">
                         <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Listagens</a>
                         <ul className="dropdown-menu">
                             <li><Link to={"/listagemServico"} className="dropdown-item" >Listagem Servico</Link></li>
@@ -189,7 +219,8 @@ const ListagemProfissional = () => {
                                             <td>{Profissional.salario}</td>
                                             <td>
                                                 <Link to={"/editarProfissional/" + Profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                                <button onClick={()=>excluir(Profissional.id)} className='btn btn-danger btn-sm'>Excluir</button>
+                                                <button onClick={()=>confirmacao(Profissional.id)} className='btn btn-danger btn-sm'>Excluir</button>
+                                                <Link to={"/recuperarSenhaProfissional"} className='btn btn-warning btn-sm'>Recuperar Senha</Link>
                                             </td>
                                         </tr>
                                     ))}

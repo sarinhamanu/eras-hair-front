@@ -74,7 +74,7 @@ const EditarSevico = () => {
         async function fetchData() {
             try {
                 const response = await axios.get("http://127.0.0.1:8000/api/cliente/find/" + parametro.id);
-                //console.log(response);
+                console.log(response);
                 setId(response.data.data.id);
                 setNome(response.data.data.nome);
                 setCelular(response.data.data.celular);
@@ -88,7 +88,7 @@ const EditarSevico = () => {
                 setNumero(response.data.data.numero);
                 setBairro(response.data.data.bairro);
                 setCep(response.data.data.cep);
-                setComplemento(response.data.data.complememnto);
+                setComplemento(response.data.data.complemento);
                 setSenha(response.data.data.senha);
             } catch (error) {
                 console.log("erro ao buscar  dados da api");

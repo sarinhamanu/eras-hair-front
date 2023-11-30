@@ -127,7 +127,7 @@ const CadastroProfissional = () => {
 
     return(
         <div>
-     <nav className=" bg-warning">
+      <nav className=" bg-brown">
                 <ul className="nav nav-tabs">
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cadastros</a>
@@ -137,19 +137,21 @@ const CadastroProfissional = () => {
                            
                         </ul>
                     </li>
-                    <li className="nav-item dropdown btn-warning">
+                    <li className="nav-item dropdown btn-bla">
                         <a className="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Listagens</a>
                         <ul className="dropdown-menu">
-                            <li><Link to={"/listagemServico"} className="dropdown-item" >Listagem Serviço</Link></li>
-                            <li><Link to={"/listagemCliente"} className="dropdown-item">Listagem Cliente</Link></li>
-                            <li><Link to={"/listagemServico"} className="dropdown-item">Listagem Serviço</Link></li>
+                            <li><Link to={"/ListagemServico"} className="dropdown-item" >Listagem Serviço</Link></li>
+                            <li><Link to={"/ListagemCliente"} className="dropdown-item">Listagem Cliente</Link></li>
+                            <li><Link to={"/ListagemServico"} className="dropdown-item">Listagem Serviço</Link></li>
+                            <li><Link to={"/ListagemAgenda"} className="dropdown-item">Listagem Agenda</Link></li>
+
                            
                         </ul>
                     </li>
 
                 </ul>
             </nav>
-         <Header/>
+       <Header/>
            <main className={styles.main}>
             <div className='container'>
                 <div className='card'>
