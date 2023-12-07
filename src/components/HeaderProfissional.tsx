@@ -4,7 +4,8 @@ import styles from "./Header.module.css"
 const Header = ( )=>{
     return(
         <header className={styles.header}>
-          <h1>Cadastro Profissional</h1>
+                <img src="ERAS-hair.png" width="166,5" height="93,75" />
+          {/* <h1>Cadastro Profissional</h1> */}
         </header>
     );
 }

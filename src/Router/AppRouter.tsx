@@ -14,7 +14,7 @@ import EditarCliente from "../components/EditarCliente";
 import EditarProfissional from "../components/EditarProfissional";
 import RecuperarSenhaCliente from "../components/RecuperarSenhaCliente";
 import RecuperarSenhaProfissional from "../components/RecuperarSenhaProfissional";
-
+import ListagemAgenda from "../components/ListagemAgenda";
 
 
 const AppRouter = () => {
@@ -32,7 +32,8 @@ const AppRouter = () => {
             <Route path="/editarProfissional/:id" element={<EditarProfissional/>}/>
             <Route path="/recuperarSenhaCliente" element={<RecuperarSenhaCliente/>}/>
             <Route path="/recuperarSenhaProfissional"  element={<RecuperarSenhaProfissional/>}/>
-            
+            <Route path="/listagemAgenda" element={<ListagemAgenda/>}/>
+
           </Routes>
         </BrowserRouter>
 
